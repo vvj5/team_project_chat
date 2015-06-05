@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
+#Display messages in descending chronological order
 get 'messages', to: 'messages#index'
 
-post 'messages', to: 'messages#create'
+#Create a new user
+post 'messages', to: 'messages#create_user'
+
+#Show all users
+get 'messages', to: 'messages#show_all_users'
 
 root to: 'messages#index'
 

@@ -1,7 +1,9 @@
 class MessageController < ApplicationController
 
+#Can I put .limit() on the end? Do I need to make a variablee first?
   def index
-    render json: Messages.order()
+    render json: Messages.order(created_at: :desc)
+  end
 
   def create_user
     render json: Messages.create(username: params[:username])
@@ -23,6 +25,11 @@ class MessageController < ApplicationController
  #    todo = Todo.find(params[:id])
  #    todo.destroy
  #    render json: { message: "Todo Detroyed" }
+ #  end
+
+ # def create
+ #    message = Message.create(username: params.fetch(:username), entry: params.fetch(:entry))
+ #    render json: message
  #  end
 
 
