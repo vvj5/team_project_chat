@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 get 'messages', to: 'message#index'
 
 #Create a new user
-post 'messages', to: 'message#create_user'
+post 'messages/create_user', to: 'message#create_user'
 
 #Show all users
-get 'messages', to: 'message#show_all_users'
+get 'messages/show_all_users', to: 'message#show_all_users'
 
 #Create a new post
-post 'messages', to: 'message#create_post'
+post 'messages/create_post', to: 'message#create_post'
 
 root to: 'message#index'
 
