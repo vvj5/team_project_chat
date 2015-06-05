@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
 
 #Display messages in descending chronological order
-get 'messages', to: 'messages#index'
+get 'messages', to: 'message#index'
 
 #Create a new user
-post 'messages', to: 'messages#create_user'
+post 'messages', to: 'message#create_user'
 
 #Show all users
-get 'messages', to: 'messages#show_all_users'
+get 'messages', to: 'message#show_all_users'
 
-root to: 'messages#index'
+#Create a new post
+post 'messages', to: 'message#create_post'
+
+root to: 'message#index'
 
 match '*not_found_route', to: 'application#skip_cors', via: [:get, :post, :put, :delete]
 
