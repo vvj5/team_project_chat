@@ -16,7 +16,7 @@ class MessageController < ApplicationController
   def recent_users
     time_span = ((Time.now - 14400)..Time.now)
     messages = Message.all
-    render json: messages.where(created_at: time_span).group_by(:username)
+    render json: messages.where(created_at: time_span).group(:username)
   end
 
   def fanatics
