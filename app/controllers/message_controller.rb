@@ -6,7 +6,7 @@ class MessageController < ApplicationController
 
   def create
     begin
-      message = Message.create(username: params.fetch(:username), post: Swearjar.default.censor (params.fetch(:post), chatroom: params.fetch(:chatroom))
+      message = Message.create(username: params.fetch(:username), post: Swearjar.default.censor(params.fetch(:post), chatroom: params.fetch(:chatroom))
       render json: message
     rescue ActionController::ParameterMissing => error
       render json: { error: error.message }, status: 422
