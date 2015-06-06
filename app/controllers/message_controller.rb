@@ -6,7 +6,7 @@ class MessageController < ApplicationController
 
   def create
     begin
-      message = Message.create(username: params.fetch(:username), post: params.fetch(:post), chatroom: params.fetch(:chatroom))
+      message = Message.create(username: params.fetch(:username), post: Swearjar.default.censor (params.fetch(:post), chatroom: params.fetch(:chatroom))
       render json: message
     rescue ActionController::ParameterMissing => error
       render json: { error: error.message }, status: 422
@@ -16,7 +16,7 @@ class MessageController < ApplicationController
   def recent_users
     time_span = ((Time.now - 14400)..Time.now)
     messages = Message.all
-    render json: messages.where(created_at: time_span).group(:username)
+    render json: messages.where(created_at: time_span).group_by(:username)
   end
 
   def fanatics
